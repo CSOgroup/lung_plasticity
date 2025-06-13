@@ -1,6 +1,6 @@
 # Plasticity of cancer and normal alveolar cells in lung adenocarcinoma
 
-Repository containing the R scripts for the analyses shown in the manuscript.
+Repository containing the code for the analyses shown in the manuscript.
 
 The clinical and molecular data for the various datasets was retreived from the sources cited in the manuscript and preprocessed with standard pipelines as outlined in the Methods section.
 
