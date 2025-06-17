@@ -23,19 +23,11 @@ library(msigdbr)
 library(fgsea)
 
 source("cvNMF.R")
-DataDir = "demo/data/"
+DataDir = "demo/"
 
-# Input data used in the paper
 dataset = "qkwlxb"
-load( file = paste0(DataDir,dataset,"_annot.RData") ) # the complete harmonized and preprocessed metadata of qian, kim, wu, laughney, xing, bischoff (aka 'qkwlxb') datasets
-load( file = paste0(DataDir,dataset,"_counts.RData") ) # the counts matrix for all cells of qkwlxb
-
-# Random subsetting 20 patients to run the demo in a reasonable time
-n_patients = 20
-set.seed(42)
-sub_patients = sample(unique(annot$Patient),n_patients)
-annot = annot[annot$Patient %in% sub_patients,] # from 93 patients to 20
-counts = counts[,rownames(annot)] # from 72k cells to 13k
+load( file = paste0(DataDir,dataset,"_annot_subset.RData") ) # a random subset of 20 patients drawn from the harmonized and preprocessed metadata of qian, kim, wu, laughney, xing, bischoff (aka 'qkwlxb') datasets
+load( file = paste0(DataDir,dataset,"_counts_subset.RData") ) # the corresponding counts matrix
 
 # Setting parameters for demo
 OutDir = paste0("demo/cvNMF/test_01/")
@@ -47,8 +39,6 @@ cor_thresh = 0.75 # same as in the paper
 recurrence_ratio = 0.2 # in the paper: 0.5
 
 # Preprocessing
-annot = annot[(annot$Epi_Cancer=="Cancer") & (annot$TN=="Tumor"),] # keeping only cancer cells in tumor samples
-counts = counts[,rownames(annot)]
 cvNMF_preprocessing( annot, counts, OutDir )
 
 # cvNMF runs
