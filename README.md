@@ -75,6 +75,8 @@ load(file = paste0(OutDir,"louvain_clustering/",clustering_solution,"/tps.RData"
 gsea_enrichment(OutDir, tps, exclude_genes)
 ```
 
+The demo should yield 7 transcriptional programs with functional enrichments similar to a subset of those reported in the manuscript.
+
 ```
 > sessionInfo()
 R version 4.1.1 (2021-08-10)
